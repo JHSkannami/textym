@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テキスト読み上げ</title>
+</head>
+<body>
+    <h1>テキスト読み上げアプリ</h1>
+    <p>以下のボックスに文字を入力してください。</p>
+    <input type="text" id="textInput" placeholder="ここに文字を入力">
+    <button id="readButton">読む</button>
+
+    <script>
+        // ボタンがクリックされたときの処理
+        document.getElementById('readButton').addEventListener('click', function() {
+            // 入力ボックスの値を取得
+            const text = document.getElementById('textInput').value;
+
+            // Web Speech API を使用して音声を生成
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'ja-JP'; // 日本語を指定
+            window.speechSynthesis.speak(speech);
+        });
+    </script>
+</body>
+</html>

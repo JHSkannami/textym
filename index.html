@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テキスト読み上げ</title>
+    <title>テキスト読み上げアプリ</title>
 </head>
 <body>
     <h1>テキスト読み上げアプリ</h1>
@@ -17,9 +17,16 @@
             // 入力ボックスの値を取得
             const text = document.getElementById('textInput').value;
 
+            if (text.trim() === "") {
+                alert("テキストボックスが空です。何か入力してください。");
+                return;
+            }
+
             // Web Speech API を使用して音声を生成
             const speech = new SpeechSynthesisUtterance(text);
             speech.lang = 'ja-JP'; // 日本語を指定
+            
+            // 音声を再生
             window.speechSynthesis.speak(speech);
         });
     </script>
